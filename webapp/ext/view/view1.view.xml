@@ -1,0 +1,141 @@
+<core:View controllerName="project4.ext.controller.ObjectPageExt"
+    xmlns:core="sap.ui.core" xmlns:smartTable="sap.ui.comp.smarttable"
+ xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+ <App >
+			<pages>
+				<Page id="page" title="{i18n>project}" showHeader="false">
+					<content>
+
+	<IconTabBar
+			select="onFilterSelect"
+		
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter icon="sap-icon://hint" key="list" >
+			
+<smartTable:SmartTable entitySet="SUPPLIERSet" smartFilterId="smartFilterBar" 
+			tableType="ResponsiveTable" useExportToExcel="true" beforeExport="onBeforeExport"
+			useVariantManagement="false" useTablePersonalisation="true" header="SUPPLIER LIST"
+			showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+			demandPopin="true" class="sapUiResponsiveContentPadding">
+		
+			</smartTable:SmartTable>
+	 
+			</IconTabFilter>
+			<IconTabFilter
+				icon="sap-icon://attachment"
+				key="LP01"
+				>
+				     <Table items="{/SUPPLIERSet}" id="supTab" mode="MultiSelect" >
+            	<headerToolbar>
+             <OverflowToolbar design="Transparent">
+             	<content>
+                <ToolbarSpacer/>
+                
+                <OverflowToolbarButton icon="sap-icon://edit" text="Edit" press="onEdit"/>
+                <OverflowToolbarButton icon="sap-icon://delete" text="Delete" press="onDelete"/>
+                <OverflowToolbarButton icon="sap-icon://add" text="add" press="createFragment"/>
+                	</content>
+            </OverflowToolbar>
+            	</headerToolbar>
+            <columns>
+            <Column>
+            <Text text="ProductId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierName"/>
+            </Column>
+             <Column>
+            <Text text="Quantity"/>
+            </Column>
+             <Column>
+            <Text text="Description"/>
+            </Column>
+            </columns>
+            <items>
+            	<ColumnListItem>
+				<cells>
+                	<Input value="{Productid}" editable="false"/>
+                    <Input value="{Supplierid}" editable="false"/>
+                    <Input value="{Suppliername}" editable="false"/>
+                    <Input value="{Quantity}" editable="false"/>
+                      <Input value="{Description}" editable="false"/>
+                    
+					
+				</cells>
+			</ColumnListItem>
+            </items>
+            </Table>
+            
+				<!-- <core:Fragment fragmentName="project4.ext.fragment.supplierTable" type="XML"/> -->
+			</IconTabFilter>
+			<IconTabFilter
+				icon="sap-icon://notes"
+				key="LP02"
+				>
+				  <Table items="{/SUPPLIERSet}" id="supTab2" mode="MultiSelect" >
+            	<headerToolbar>
+             <OverflowToolbar design="Transparent">
+             	<content>
+                <ToolbarSpacer/>
+                
+                <OverflowToolbarButton icon="sap-icon://edit" text="Edit" press="onEdit"/>
+                <OverflowToolbarButton icon="sap-icon://delete" text="Delete" press="onDelete"/>
+                <OverflowToolbarButton icon="sap-icon://add" text="add" press="createFragment"/>
+                	</content>
+            </OverflowToolbar>
+            	</headerToolbar>
+            <columns>
+            <Column>
+            <Text text="ProductId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierName"/>
+            </Column>
+             <Column>
+            <Text text="Quantity"/>
+            </Column>
+             <Column>
+            <Text text="Description"/>
+            </Column>
+            </columns>
+            <items>
+            	<ColumnListItem>
+				<cells>
+                	<Input value="{Productid}" editable="false"/>
+                    <Input value="{Supplierid}" editable="false"/>
+                    <Input value="{Suppliername}" editable="false"/>
+                    <Input value="{Quantity}" editable="false"/>
+                      <Input value="{Description}" editable="false"/>
+                    
+					
+				</cells>
+			</ColumnListItem>
+            </items>
+            </Table>
+				
+			<!-- <core:Fragment fragmentName="project4.ext.fragment.supplierTable" type="XML"/> -->
+			</IconTabFilter>
+
+		</items>
+	</IconTabBar>
+		</content>
+		 <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button text="Save" press="onEditSave" type="Emphasized" visible="false" id="saveid">
+				
+				</Button>
+			</OverflowToolbar>
+		</footer>
+</Page>
+			</pages>
+		</App>
+
+ </core:View>

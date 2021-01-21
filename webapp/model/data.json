@@ -1,0 +1,26 @@
+{
+    "supplier":[
+        {
+            "Supplierid":"SI07",
+            "Productid":"LP01",
+            "Suppliername":"RADHE ELECTRONICES",
+            "Quantity":"500",
+            "Description":"RADHE ELECTRONICES AND SUPPLIERS"
+        },
+        {
+            "Supplierid":"SI08",
+            "Productid":"LP01",
+            "Suppliername":"SHYAM ELECTRONICES",
+            "Quantity":"500",
+            "Description":"SHYAM ELECTRONICES AND SUPPLIERS"
+        },
+        {
+            "Supplierid":"SI09",
+            "Productid":"LP01",
+            "Suppliername":"RAGHU ELECTRONICES",
+            "Quantity":"500",
+            "Description":"RAGHU ELECTRONICES AND SUPPLIERS"
+        }
+    
+    ]
+}

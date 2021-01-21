@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+ xmlns="sap.m">
+
+ 	<IconTabBar
+		id="idIconTabBarMulti"	select="onFilterSelect"
+		expanded="{device>/isNoPhone}"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter icon="sap-icon://hint" key="list" >
+			
+<smartTable:SmartTable entitySet="SUPPLIERSet" smartFilterId="smartFilterBar" 
+			tableType="ResponsiveTable" useExportToExcel="true" beforeExport="onBeforeExport"
+			useVariantManagement="false" useTablePersonalisation="true" header="SUPPLIER LIST"
+			showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+			demandPopin="true" class="sapUiResponsiveContentPadding">
+		
+			</smartTable:SmartTable>
+	 
+			</IconTabFilter>
+			<IconTabFilter
+				icon="sap-icon://attachment"
+				key="LP01"
+				>
+				 
+				<core:Fragment fragmentName="project4.ext.fragment.supplierTable" type="XML"/>
+			</IconTabFilter>
+			<IconTabFilter
+				icon="sap-icon://notes"
+				key="LP02"
+				>
+			<core:Fragment fragmentName="project4.ext.fragment.supplierTable" type="XML"/>
+			</IconTabFilter>
+
+		</items>
+	</IconTabBar>
+
+
+</core:FragmentDefinition>

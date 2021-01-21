@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZLKLISTREPORT_SRV" xml:lang="ar" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="PRODUCT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Productid"/>
+                </Key>
+                <Property Name="Productid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Productname" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Productprice" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Productquantity" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="GETSUPPLIERS" Relationship="ZLKLISTREPORT_SRV.ASSO_PRODUCT_TO_SUPPLIER" FromRole="FromRole_ASSO_PRODUCT_TO_SUPPLIER" ToRole="ToRole_ASSO_PRODUCT_TO_SUPPLIER"/>
+            </EntityType>
+            <EntityType Name="SUPPLIER" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplierid"/>
+                </Key>
+                <Property Name="Supplierid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Suppliername" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Productid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ASSO_PRODUCT_TO_SUPPLIER" sap:content-version="1">
+                <End Type="ZLKLISTREPORT_SRV.PRODUCT" Multiplicity="1" Role="FromRole_ASSO_PRODUCT_TO_SUPPLIER"/>
+                <End Type="ZLKLISTREPORT_SRV.SUPPLIER" Multiplicity="*" Role="ToRole_ASSO_PRODUCT_TO_SUPPLIER"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ASSO_PRODUCT_TO_SUPPLIER">
+                        <PropertyRef Name="Productid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ASSO_PRODUCT_TO_SUPPLIER">
+                        <PropertyRef Name="Productid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZLKLISTREPORT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="PRODUCTSet" EntityType="ZLKLISTREPORT_SRV.PRODUCT" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SUPPLIERSet" EntityType="ZLKLISTREPORT_SRV.SUPPLIER" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="ASSO_PRODUCT_TO_SUPPLIERSet" Association="ZLKLISTREPORT_SRV.ASSO_PRODUCT_TO_SUPPLIER" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PRODUCTSet" Role="FromRole_ASSO_PRODUCT_TO_SUPPLIER"/>
+                    <End EntitySet="SUPPLIERSet" Role="ToRole_ASSO_PRODUCT_TO_SUPPLIER"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://183.82.98.9:8057/sap/opu/odata/sap/ZLKLISTREPORT_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://183.82.98.9:8057/sap/opu/odata/sap/ZLKLISTREPORT_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

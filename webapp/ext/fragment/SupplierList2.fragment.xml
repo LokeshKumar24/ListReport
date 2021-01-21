@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+ xmlns:table="sap.ui.table"
+ xmlns="sap.m">
+   	<Dialog id="openD2"
+		title="New Suppliers">
+
+		<Table id="table4" 
+		items="{create>/supplier}" mode="MultiSelect">
+			<headerToolbar>
+             <OverflowToolbar design="Transparent">
+             	<content>
+                <ToolbarSpacer/>
+                
+                <OverflowToolbarButton icon="sap-icon://save" text="Save" press="onSave"/>
+                <!-- <OverflowToolbarButton icon="sap-icon://add" text="add" press="addRow"/> -->
+                <OverflowToolbarButton icon="sap-icon://decline" text="Close" press="onClose"/>
+                	</content>
+            </OverflowToolbar>
+            	</headerToolbar>
+		 <columns>
+            <Column>
+            <Text text="ProductId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierName"/>
+            </Column>
+             <Column>
+            <Text text="Quantity"/>
+            </Column>
+             <Column>
+            <Text text="Description"/>
+            </Column>
+            </columns>
+            <items>
+            	<ColumnListItem>
+				<cells>
+				<Input id="" type="Text" placeholder="Enter Product Id" value="{create>Productid}"  ></Input>
+              
+				<Input id="SupId" placeholder="EnterSupplier Id" value="{create>Supplierid}" ></Input>
+				
+				<Input  type="Text" placeholder="Enter Supplier Name " value="{create>Suppliername}" ></Input>                 
+               
+				
+				<Input id="" type="Text" placeholder="Enter Quantity" value="{create>Quantity}"  ></Input>
+			
+				<Input id="" type="Text" placeholder="Enter Description" value="{create>Description}"  ></Input>
+                    
+					
+				</cells>
+			</ColumnListItem>
+            </items>
+		</Table>
+            
+	</Dialog>
+</core:FragmentDefinition>

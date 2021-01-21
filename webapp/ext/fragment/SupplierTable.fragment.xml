@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+ xmlns="sap.m">
+
+
+            <Table items="{/SUPPLIERSet}" id="supTab" mode="MultiSelect" >
+            	<headerToolbar>
+             <OverflowToolbar design="Transparent">
+             	<content>
+                <ToolbarSpacer/>
+                
+                <OverflowToolbarButton icon="sap-icon://edit" text="Edit" press="onEdit"/>
+                <OverflowToolbarButton icon="sap-icon://delete" text="Delete" press="onDelete"/>
+                <OverflowToolbarButton icon="sap-icon://add" text="add" press="createFragment"/>
+                	</content>
+            </OverflowToolbar>
+            	</headerToolbar>
+            <columns>
+            <Column>
+            <Text text="ProductId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierId"/>
+            </Column>
+             <Column>
+            <Text text="SupplierName"/>
+            </Column>
+             <Column>
+            <Text text="Quantity"/>
+            </Column>
+             <Column>
+            <Text text="Description"/>
+            </Column>
+            </columns>
+            <items>
+            	<ColumnListItem>
+				<cells>
+                	<Input value="{Productid}" editable="false"/>
+                    <Input value="{Supplierid}" editable="false"/>
+                    <Input value="{Suppliername}" editable="false"/>
+                    <Input value="{Quantity}" editable="false"/>
+                      <Input value="{Description}" editable="false"/>
+                    
+					
+				</cells>
+			</ColumnListItem>
+            </items>
+            </Table>
+              <footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer />
+				<Button text="Save" press="onEditSave" type="Emphasized" visible="false" id="saveid">
+				
+				</Button>
+			</OverflowToolbar>
+		</footer>
+		
+            </core:FragmentDefinition>

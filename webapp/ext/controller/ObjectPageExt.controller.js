@@ -96,12 +96,13 @@ sap.ui.controller("project4.ext.controller.ObjectPageExt", {
        oModel10.setUseBatch(true);
 
                    
-       oModel10.setDeferredGroups(["myGroupId"]); 
+       oModel10.setDeferredGroups(["myGroupId1"]); 
        var group =  oModel10.getDeferredGroups();
                    
-       oModel10.setDeferredGroups(oModel10.getDeferredGroups().concat(["myGroupId"]));
+       oModel10.setDeferredGroups(oModel10.getDeferredGroups().concat(["myGroupId1"]));
                        
-       var mParameters = {groupId:"myGroupId",success:function(odata, resp){
+       var mParameters = {groupId:"myGroupId1",
+       success:function(odata, resp){
                            console.log(resp);
                            
 
@@ -160,20 +161,24 @@ oModel10.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
 oModel10.setUseBatch(true);
 
            
-oModel10.setDeferredGroups(["myGroupId"]); 
+oModel10.setDeferredGroups(["myGroupId1"]); 
 var group =  oModel10.getDeferredGroups();
            
-oModel10.setDeferredGroups(oModel10.getDeferredGroups().concat(["myGroupId"]));
+oModel10.setDeferredGroups(oModel10.getDeferredGroups().concat(["myGroupId1"]));
                
-var mParameters = {groupId:"myGroupId",
+var mParameters = {groupId:"myGroupId1",
 success:function(odata, resp){
   
      console.log(resp);
+     that.byId("supTab").removeSelections(true) 
+     that.byId("supTab").getBinding("items").refresh();
+     that.byId("supTab2").removeSelections(true) 
+     that.byId("supTab2").getBinding("items").refresh();
 
 },
-error: function(odata, resp) {
+error: function(error) {
 
-                      console.log(resp);
+                      console.log(error);
        }};
 
 oModel10.remove("/SUPPLIERSet('" + sid + "')",  mParameters);
@@ -187,10 +192,6 @@ oModel10.remove("/SUPPLIERSet('" + sid + "')",  mParameters);
     oModel10.submitChanges(mParameters);
    sap.m.MessageToast.show("Deleted Succesfully");
      this.getView().byId("saveid").setVisible(false);
-     this.byId("supTab").removeSelections(true) 
-     this.byId("supTab").getBinding("items").refresh();
-     this.byId("supTab2").removeSelections(true) 
-     this.byId("supTab2").getBinding("items").refresh();
 
     },
     createPop:null,
@@ -211,7 +212,7 @@ oModel10.remove("/SUPPLIERSet('" + sid + "')",  mParameters);
     onSave:function(){
       debugger;
      // var oid = this.createId("fragId");
-      
+      var that = this;
      // var oTable1 =  sap.ui.core.Fragment.byId("nfgId", "createTable")
      var oTable1 = this.createPop.getContent()[0];
         var aItems = oTable1.getSelectedItems();
@@ -244,6 +245,8 @@ oModel10.create("/SUPPLIERSet",Payload,{
     method:"POST",
     success:function(odata,resp){
         console.log(odata)
+        that.byId("supTab").getBinding("items").refresh();
+        that.byId("supTab2").getBinding("items").refresh();
     },
     error:function(error){
         console.log(error)
@@ -264,9 +267,28 @@ oModel10.submitChanges({
 });
 
     sap.m.MessageToast.show("Created Succesfully");
-    this.createPop.getContent()[0].getBinding("items").refresh();
-    this.createPop.getContent()[0].removeSelections(true) 
-    }
+    oTable1.getBinding("items").refresh();
+  oTable1.removeSelections(true)
+    this.onClose(); 
+    },
+    onInit:function(){
+        //  debugger;
+         var oJSONModel = new sap.ui.model.json.JSONModel();
+         this.getOwnerComponent().setModel(oJSONModel, "myModel");
+
+         var sUrl = "/sap/opu/odata/SAP/ZLKLISTREPORT_SRV/";
+         var oModel = new sap.ui.model.odata.ODataModel(sUrl, true);
+            oModel.read("/SUPPLIERSet", {
+            success: function (data) {
+           oJSONModel.setData({
+            SUPPLIERSet: data.results
+           });
+        // alert("Success");
+          }
+  
+        })
+
+     }
   
     
 });
